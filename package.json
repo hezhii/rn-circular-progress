@@ -1,7 +1,7 @@
 {
   "name": "circular-progress-rn",
   "version": "1.0.0",
-  "description": "test",
+  "description": "Circular progress bar for react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
