@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import { RnCircularProgressView } from 'rn-circular-progress';
+import CircularProgress from 'rn-circular-progress';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RnCircularProgressView color="#32a852" style={styles.box} />
+      <CircularProgress progress={50} strokeLinecap="round" />
     </View>
   );
 }

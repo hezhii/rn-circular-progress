@@ -1,26 +1,72 @@
-import {
-  requireNativeComponent,
-  UIManager,
-  Platform,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import React, { memo, useMemo } from 'react';
+import Svg, { Circle, Linecap } from 'react-native-svg';
 
-const LINKING_ERROR =
-  `The package 'rn-circular-progress' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+interface Props {
+  style?: StyleProp<ViewStyle>;
+  radius?: number;
+  strokeWidth?: number;
+  strokeLinecap?: Linecap;
+  Linecap?: Linecap;
+  backgroundTrackColor?: string; // 底部轨道颜色
+  trackColor?: string;
+  progress?: number;
+}
 
-type RnCircularProgressProps = {
-  color: string;
-  style: ViewStyle;
+const CircularProgress: React.FC<Props> = ({
+  style,
+  radius = 100,
+  strokeWidth = 10,
+  strokeLinecap,
+  backgroundTrackColor = '#d8d8d8',
+  trackColor = '#fff',
+  progress = 0,
+}) => {
+  const dasharray = useMemo(() => [Math.PI * 2 * radius], [radius]);
+  const newProgress = Math.min(Math.max(progress, 0), 100);
+  const offest = Math.PI * 2 * radius * (1 - newProgress / 100);
+
+  // 获取除半径外额外的大小，线宽*2
+  const _getExtraSize = () => {
+    return strokeWidth * 2;
+  };
+
+  const svgSize = radius * 2 + _getExtraSize();
+  const center = svgSize / 2;
+  return (
+    <View style={[styles.container, style]}>
+      <Svg width={svgSize} height={svgSize}>
+        <Circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          stroke={backgroundTrackColor}
+          strokeWidth={strokeWidth}
+        />
+        <Circle
+          cx={center}
+          cy={center}
+          r={radius}
+          fill="none"
+          origin={`${center},${center}`}
+          rotation={-90}
+          stroke={trackColor}
+          strokeWidth={strokeWidth}
+          strokeDasharray={dasharray}
+          strokeDashoffset={offest}
+          strokeLinecap={strokeLinecap}
+        />
+      </Svg>
+    </View>
+  );
 };
 
-const ComponentName = 'RnCircularProgressView';
+export default memo(CircularProgress);
 
-export const RnCircularProgressView =
-  UIManager.getViewManagerConfig(ComponentName) != null
-    ? requireNativeComponent<RnCircularProgressProps>(ComponentName)
-    : () => {
-        throw new Error(LINKING_ERROR);
-      };
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
