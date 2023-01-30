@@ -5,17 +5,18 @@ Circular progress bar for react native
 ## Installation
 
 ```sh
-npm install rn-circular-progress
+npm i react-native-svg
+npm i rn-circular-progress
 ```
 
 ## Usage
 
 ```js
-import { RnCircularProgressView } from "rn-circular-progress";
+import CircularProgress from 'rn-circular-progress';
 
 // ...
 
-<RnCircularProgressView color="tomato" />
+<CircularProgress progress={50} />;
 ```
 
 ## Contributing

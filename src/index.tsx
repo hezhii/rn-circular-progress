@@ -7,7 +7,6 @@ interface Props {
   radius?: number;
   strokeWidth?: number;
   strokeLinecap?: Linecap;
-  Linecap?: Linecap;
   backgroundTrackColor?: string; // 底部轨道颜色
   trackColor?: string;
   progress?: number;
