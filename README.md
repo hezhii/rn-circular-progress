@@ -1,4 +1,4 @@
-# rn-circular-progress
+# circular-progress-rn
 
 Circular progress bar for react native
 
@@ -8,13 +8,13 @@ Circular progress bar for react native
 
 ```sh
 npm i react-native-svg
-npm i rn-circular-progress
+npm i circular-progress-rn
 ```
 
 ## Usage
 
 ```js
-import CircularProgress from 'rn-circular-progress';
+import CircularProgress from 'circular-progress-rn';
 
 // ...
 

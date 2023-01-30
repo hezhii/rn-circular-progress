@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import CircularProgress from 'rn-circular-progress';
+import CircularProgress from 'circular-progress-rn';
 
 export default function App() {
   return (

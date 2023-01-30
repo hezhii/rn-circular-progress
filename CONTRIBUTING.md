@@ -53,9 +53,9 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C or Swift files, open `example/ios/RnCircularProgressExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > rn-circular-progress`.
+To edit the Objective-C or Swift files, open `example/ios/RnCircularProgressExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > circular-progress-rn`.
 
-To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `rn-circular-progress` under `Android`.
+To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `circular-progress-rn` under `Android`.
 
 
 ### Commit message convention
